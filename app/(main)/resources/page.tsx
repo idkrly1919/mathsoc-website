@@ -12,7 +12,7 @@ import { Button } from "@/components/ui/button";
 import {
   ChevronDown,
   Download,
-  FileText,
+  File,
   Folder,
   Search,
   SquareArrowOutUpRight,
@@ -126,7 +126,7 @@ const Resources: React.FC = () => {
         if (directFiles.length > 0) {
           subfolders.unshift({
             id: `${folder.id}_direct`,
-            name: "Direct Files",
+            name: "Subfolder",
             files: directFiles,
           });
         }
@@ -215,18 +215,19 @@ const Resources: React.FC = () => {
           </motion.section>
         </div>
 
+        {/* Resources and description */}
         <motion.div
-          className="text-center px-24 py-6"
+          className="text-center mx-8 md:mx-12 py-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          <h1 className="text-4xl font-bold pb-2">Resources</h1>
-          <p className="text-sm font-normal text-gray-400">
-            Explore a curated collection of resources to support your studies.
-            Find past exam papers, revision lecture recordings and summary
-            sheets, and helpful guides on LaTeX, R, and more.
+          <h1 className="text-3xl md:text-4xl font-bold pb-2">Resources</h1>
+          <p className="text-xs md:text-sm font-normal text-gray-400">
+            A collection of resources to support your studies. Find past exam
+            papers, revision lecture recordings and summary sheets, and helpful
+            guides on LaTeX, R, and more.
           </p>
 
           <div className="flex flex-col items-center space-y-12 pt-24">
@@ -300,19 +301,19 @@ const Resources: React.FC = () => {
           </motion.section>
         </div>
 
-        {/* Resources, description and error */}
+        {/* Resources and description */}
         <motion.div
-          className="text-center px-8 py-6"
+          className="text-center mx-8 md:mx-12 py-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          <h1 className="text-4xl font-bold pb-2">Resources</h1>
-          <p className="text-sm font-normal text-gray-400">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
-            vitae posuere massa. Proin vel ante tellus. Curabitur in orci id
-            ligula pellentesque malesuada.{" "}
+          <h1 className="text-3xl md:text-4xl font-bold pb-2">Resources</h1>
+          <p className="text-xs md:text-sm font-normal text-gray-400">
+            A collection of resources to support your studies. Find past exam
+            papers, revision lecture recordings and summary sheets, and helpful
+            guides on LaTeX, R, and more.
           </p>
 
           <p className="text-lg text-red-400 mt-4">{error}</p>
@@ -363,7 +364,7 @@ const Resources: React.FC = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
-      className="min-h-[100vh]"
+      className="min-h-[100vh] mb-10"
     >
       {/* Wave background underneath navbar */}
       <div className="relative">
@@ -382,35 +383,35 @@ const Resources: React.FC = () => {
 
       {/* Resources and description */}
       <motion.div
-        className="text-center px-24 py-6"
+        className="text-center mx-8 md:mx-12 py-6"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
         viewport={{ once: true }}
       >
-        <h1 className="text-4xl font-bold pb-2">Resources</h1>
-        <p className="text-sm font-normal text-gray-400">
-          Explore a curated collection of resources to support your studies.
-          Find past exam papers, revision lecture recordings and summary sheets,
-          and helpful guides on LaTeX, R, and more.
+        <h1 className="text-3xl md:text-4xl font-bold pb-2">Resources</h1>
+        <p className="text-xs md:text-sm font-normal text-gray-400">
+          A collection of resources to support your studies. Find past exam
+          papers, revision lecture recordings and summary sheets, and helpful
+          guides on LaTeX, R, and more.
         </p>
       </motion.div>
 
       {/* Search bar and filter button */}
-      <div className="flex gap-4 px-8 pt-4 mx-10 md:mx-24">
+      <div className="flex gap-4 mx-8 md:mx-12 xl:mx-24 xl:px-8 pt-2">
         <div className="relative flex-1">
-          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#9ca3af] w-5 h-5" />
+          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#9ca3af] w-4 h-4 md:w-5 md:h-5" />
           <Input
             value={searchQuery}
             placeholder="Search resources (e.g. MATH1081)"
-            className="pl-12 bg-[#333e59] border-[#556080] text-white placeholder:text-[#9ca3af] h-12"
+            className="pl-10 md:pl-12 bg-[#333e59] border-[#556080] text-white text-xs md:text-base placeholder:text-[#9ca3af] h-12"
             onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}
           />
         </div>
       </div>
 
       {/* All resource folders */}
-      <div className="space-y-4 px-8 pt-8 mx-10 md:mx-24 pb-20">
+      <div className="space-y-4 mx-8 md:mx-12 xl:mx-24 xl:px-8 pt-8">
         {filteredFolders.length === 0 ? (
           <div className="text-center text-gray-400 text-lg pt-4">
             No matching resources found
@@ -432,21 +433,23 @@ const Resources: React.FC = () => {
                     className="w-full justify-between hover:bg-[#272f45] text-white h-auto px-6 py-6"
                   >
                     <div className="flex items-center space-x-2">
-                      <Folder className="w-5 h-5" />
-                      <p className="text-lg font-semibold">{folder.name}</p>
+                      <Folder className="w-4 h-4 md:w-5 md:h-5" />
+                      <p className="text-sm md:text-lg font-semibold">
+                        {folder.name}
+                      </p>
                     </div>
 
                     <motion.div
                       animate={{ rotate: openFolders[folder.id] ? 180 : 0 }}
                       transition={{ duration: 0.3, ease: "easeInOut" }}
                     >
-                      <ChevronDown className="w-5 h-5" />
+                      <ChevronDown className="w-4 h-4 md:w-5 md:h-5" />
                     </motion.div>
                   </Button>
                 </CollapsibleTrigger>
 
                 {/* Folder content */}
-                <CollapsibleContent className="mt-4 px-6 pb-4">
+                <CollapsibleContent className="mt-2 md:mt-4 px-4 md:px-6 pb-4">
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
@@ -474,35 +477,37 @@ const Resources: React.FC = () => {
                               className="bg-[#272F45] border-[#556080] rounded-lg"
                             >
                               {/* Subfolder name */}
-                              <CardHeader className="flex flex-row justify-between py-5 bg-[#1F2537] rounded-t-lg">
-                                <CardTitle className="text-white text-lg flex items-center space-x-2">
+                              <CardHeader className="flex flex-row justify-between py-2 md:py-5 bg-[#1F2537] rounded-t-lg px-4 xl:px-6">
+                                <CardTitle className="text-white text-sm md:text-lg flex items-center space-x-2">
                                   <span>{subfolder.name}</span>
                                 </CardTitle>
-                                <Button
-                                  size="sm"
-                                  variant="ghost"
-                                  className="text-white hover:bg-[#333e59] p-2"
-                                  onClick={() =>
-                                    window.open(
-                                      `https://drive.google.com/drive/folders/${subfolder.id}`,
-                                      "_blank"
-                                    )
-                                  }
-                                >
-                                  <SquareArrowOutUpRight className="w-4 h-4" />
-                                </Button>
+                                <div className="flex space-x-1 pb-1 md:pb-0">
+                                  <Button
+                                    size="sm"
+                                    variant="ghost"
+                                    className="text-white hover:bg-[#333e59] p-2"
+                                    onClick={() =>
+                                      window.open(
+                                        `https://drive.google.com/drive/folders/${subfolder.id}`,
+                                        "_blank"
+                                      )
+                                    }
+                                  >
+                                    <SquareArrowOutUpRight className="w-4 h-4" />
+                                  </Button>
+                                </div>
                               </CardHeader>
 
                               {/* Subfolder content */}
-                              <CardContent className="pt-4">
+                              <CardContent className="pt-4 px-4 xl:px-6">
                                 {/* Number of resources */}
                                 <div className="flex items-center justify-between mb-4">
-                                  <span className="text-white font-medium">
+                                  <span className="text-white font-medium text-sm md:text-base">
                                     Files
                                   </span>
                                   <Badge
                                     variant="secondary"
-                                    className="bg-[#2b52c8] text-white"
+                                    className="bg-[#2b52c8] text-white text-xs"
                                   >
                                     {subfolder.files.length} Resource
                                     {subfolder.files.length !== 1 ? "s" : ""}
@@ -520,25 +525,26 @@ const Resources: React.FC = () => {
                                       .map((file) => (
                                         <div
                                           key={file.id}
-                                          className="flex items-center justify-between bg-[#556080] rounded-lg p-3"
+                                          className="flex items-center justify-between bg-[#556080] rounded-lg p-2 md:p-3"
                                         >
                                           <div className="flex items-center space-x-2 flex-1 min-w-0">
-                                            <span className="text-lg">
-                                              <FileText className="w-4 h-4" />
-                                            </span>
-
                                             {/* File name */}
                                             <span
-                                              className="text-white text-sm truncate"
+                                              className="text-white text-xs md:text-sm truncate"
                                               title={file.name
                                                 .replaceAll("_", " ")
                                                 .replaceAll("-", " ")
                                                 .replace(".pdf", "")}
                                             >
                                               {file.name
-                                                .replaceAll("_", " ")
+                                                .replaceAll("_", "/")
                                                 .replaceAll("-", " ")
-                                                .replace(".pdf", "")}
+                                                .replace(".pdf", "")
+                                                .replaceAll(
+                                                  `${subfolder.name}`,
+                                                  ""
+                                                )
+                                                .replaceAll("/", " ")}
                                             </span>
                                           </div>
 
@@ -548,7 +554,7 @@ const Resources: React.FC = () => {
                                               <Button
                                                 size="sm"
                                                 variant="ghost"
-                                                className="text-white hover:bg-[#333e59] p-2"
+                                                className="text-white hover:bg-[#333e59] p-1 md:p-2"
                                                 onClick={() =>
                                                   window.open(
                                                     file.webViewLink,
@@ -559,18 +565,21 @@ const Resources: React.FC = () => {
                                                 <SquareArrowOutUpRight className="w-4 h-4" />
                                               </Button>
                                             )}
-                                            {/* {file.webContentLink && (
-                                  <Button
-                                    size="sm"
-                                    variant="ghost"
-                                    className="text-white hover:bg-[#333e59] p-1"
-                                    onClick={() =>
-                                      window.open(file.webContentLink, "_blank")
-                                    }
-                                  >
-                                    <Download className="w-4 h-4" />
-                                  </Button>
-                                )} */}
+                                            {file.webContentLink && (
+                                              <Button
+                                                size="sm"
+                                                variant="ghost"
+                                                className="text-white hover:bg-[#333e59] p-1 md:p-2"
+                                                onClick={() =>
+                                                  window.open(
+                                                    file.webContentLink,
+                                                    "_blank"
+                                                  )
+                                                }
+                                              >
+                                                <Download className="w-4 h-4" />
+                                              </Button>
+                                            )}
                                           </div>
                                         </div>
                                       ))

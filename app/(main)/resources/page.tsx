@@ -29,6 +29,7 @@ interface DriveFile {
   mimeType: string;
   webViewLink?: string;
   webContentLink?: string;
+  modifiedTime: string;
 }
 
 interface Subfolder {
@@ -63,7 +64,7 @@ const Resources: React.FC = () => {
       const data = await res.json();
       const modifiedTimes: string[] = [];
 
-      data.files?.forEach((file: unknown) => {
+      data.files?.forEach((file: DriveFile) => {
         modifiedTimes.push(file.modifiedTime);
       });
 
@@ -198,39 +199,42 @@ const Resources: React.FC = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="h-[100vh]"
+        className="min-h-[100vh]"
       >
-        {/* Wave background underneath navbar */}
-        <div className="relative">
-          <Wave containerId="about-wave" rotation={0} />
-
-          <motion.section
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            viewport={{ once: true }}
-            className="relative w-full py-8 sm:py-12 flex justify-center px-6 sm:px-12 lg:px-16"
-          >
-            <div className="flex flex-col items-center"></div>
-          </motion.section>
-        </div>
+        <motion.div
+          className="relative w-full h-[60vh]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5 }}
+        >
+          <Image
+            src="/images/photos/image4.jpg"
+            alt="execs"
+            className="w-full h-full object-cover"
+            width={5181}
+            height={3454}
+          />
+          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
+            <motion.h1
+              className="text-4xl font-bold text-white"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+            >
+              Resources
+            </motion.h1>
+          </div>
+        </motion.div>
 
         {/* Resources and description */}
         <motion.div
-          className="text-center mx-8 md:mx-12 py-6"
+          className="text-center mx-8 md:mx-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          <h1 className="text-3xl md:text-4xl font-bold pb-2">Resources</h1>
-          <p className="text-xs md:text-sm font-normal text-gray-400">
-            A collection of resources to support your studies. Find past exam
-            papers, revision lecture recordings and summary sheets, and helpful
-            guides on LaTeX, R, and more.
-          </p>
-
-          <div className="flex flex-col items-center space-y-12 pt-24">
+          <div className="flex flex-col items-center space-y-12 pt-24 pb-20">
             <div className="relative">
               <SymbolExplosion explosionDelay={0} constantExplosion={true}>
                 <motion.div
@@ -286,34 +290,41 @@ const Resources: React.FC = () => {
         transition={{ duration: 1 }}
         className="min-h-[100vh]"
       >
-        {/* Wave background underneath navbar */}
-        <div className="relative">
-          <Wave containerId="about-wave" rotation={0} />
-
-          <motion.section
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            viewport={{ once: true }}
-            className="relative w-full py-8 sm:py-12 flex justify-center px-6 sm:px-12 lg:px-16"
-          >
-            <div className="flex flex-col items-center"></div>
-          </motion.section>
-        </div>
+        <motion.div
+          className="relative w-full h-[60vh]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5 }}
+        >
+          <Image
+            src="/images/photos/image4.jpg"
+            alt="execs"
+            className="w-full h-full object-cover"
+            width={5181}
+            height={3454}
+          />
+          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
+            <motion.h1
+              className="text-4xl font-bold text-white"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+            >
+              Resources
+            </motion.h1>
+          </div>
+        </motion.div>
 
         {/* Resources and description */}
         <motion.div
-          className="text-center mx-8 md:mx-12 py-6"
+          className="text-center mx-8 md:mx-12 py-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          <h1 className="text-3xl md:text-4xl font-bold pb-2">Resources</h1>
-          <p className="text-xs md:text-sm font-normal text-gray-400">
-            A collection of resources to support your studies. Find past exam
-            papers, revision lecture recordings and summary sheets, and helpful
-            guides on LaTeX, R, and more.
+          <p className="text-lg md:text-lg font-normal text-red-500">
+            Error loading resources. Please try again later.
           </p>
 
           <p className="text-lg text-red-400 mt-4">{error}</p>

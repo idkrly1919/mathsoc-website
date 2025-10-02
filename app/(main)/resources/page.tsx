@@ -12,7 +12,6 @@ import { Button } from "@/components/ui/button";
 import {
   ChevronDown,
   Download,
-  File,
   Folder,
   Search,
   SquareArrowOutUpRight,
@@ -64,7 +63,7 @@ const Resources: React.FC = () => {
       const data = await res.json();
       const modifiedTimes: string[] = [];
 
-      data.files?.forEach((file: any) => {
+      data.files?.forEach((file: unknown) => {
         modifiedTimes.push(file.modifiedTime);
       });
 
@@ -75,7 +74,7 @@ const Resources: React.FC = () => {
     }
   };
 
-  const getFolderContents = async (folderId: string): Promise<any[]> => {
+  const getFolderContents = async (folderId: string): Promise<DriveFile[]> => {
     try {
       const res = await fetch(
         `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${process.env.NEXT_PUBLIC_GOOGLE_DRIVE_API_KEY}&fields=files(id,name,mimeType,parents,webViewLink,webContentLink,modifiedTime)`

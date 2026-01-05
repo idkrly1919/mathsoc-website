@@ -18,7 +18,21 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Building for Production
+
+To build the static site for deployment:
+
+```bash
+npm run build
+```
+
+This generates static HTML files in the `out/` directory, including `index.html` which loads the content from `app/page.tsx`.
+
+## Deployment
+
+This site is configured for static export and can be deployed to Cloudflare Pages, Vercel, or any static hosting service.
+
+For detailed deployment instructions, see [DEPLOYMENT.md](./DEPLOYMENT.md).
 
 ## Learn More
 

@@ -41,7 +41,7 @@ This will generate static HTML files in the `out/` directory, including the main
 2. Go to **Pages** in the sidebar
 3. Click **Create a project**
 4. Select **Connect to Git**
-5. Choose your repository: `idkrly1919/mathsoc-website`
+5. Choose your repository: `idkrly1919/mathsoc-website` (or your forked repository)
 6. Configure build settings:
    - **Production branch**: `main` (or your preferred branch)
    - **Framework preset**: Next.js
@@ -69,6 +69,7 @@ This will generate static HTML files in the `out/` directory, including the main
 4. Deploy to Pages:
    ```bash
    wrangler pages deploy out --project-name=mathsoc-website
+   # Or use your custom project name: --project-name=your-project-name
    ```
 
 ## Environment Variables

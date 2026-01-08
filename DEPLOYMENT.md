@@ -47,6 +47,9 @@ This will generate static HTML files in the `out/` directory, including the main
    - **Framework preset**: Next.js
    - **Build command**: `npm run build`
    - **Build output directory**: `out`
+   
+   **Important**: Make sure the "Build output directory" is set to `out`, NOT `/` or `.`. This tells Cloudflare Pages where to find the static files after the build completes.
+   
 7. Click **Save and Deploy**
 
 ### Option 2: Manual Deployment via Wrangler CLI
@@ -139,6 +142,25 @@ To add a custom domain:
 
 ## Troubleshooting
 
+### "This page can't be found" or HTTP ERROR 404
+
+If you see a 404 error when accessing your deployed site:
+
+1. **Check the build output directory setting**:
+   - Go to your Cloudflare Pages project settings
+   - Navigate to **Settings** > **Builds & deployments**
+   - Verify that "Build output directory" is set to `out` (not `/`, `.`, or empty)
+   - If it's incorrect, update it and trigger a new deployment
+
+2. **Verify the build completed successfully**:
+   - Check the deployment logs in Cloudflare Pages dashboard
+   - Look for "✓ Exporting" and "Finished" messages
+   - Ensure no errors occurred during the build
+
+3. **Check if index.html exists**:
+   - The `out/` directory should contain `index.html` after building
+   - Run `npm run build` locally and verify `out/index.html` exists
+
 ### "No web page found" error
 
 - Ensure the build output directory is set to `out`
@@ -156,6 +178,15 @@ To add a custom domain:
 - Check that all dependencies are listed in `package.json`
 - Verify Node.js version compatibility (recommend v18 or higher)
 - Review Cloudflare Pages build logs for specific errors
+
+### "Pages only supports files up to 25 MiB in size" error
+
+If you encounter an error about large files (e.g., `.next/cache/webpack/server-production/0.pack`):
+
+- This occurs because Cloudflare Pages validates all files in the repository, including build cache files
+- Solution: The build script automatically removes the `.next/cache/` directory after building to prevent this error
+- The build command uses Node.js's built-in `fs.rmSync()` for cross-platform compatibility
+- Only files in the `out/` directory (the configured build output directory) are deployed
 
 ## Additional Resources
 

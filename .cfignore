@@ -1,0 +1,51 @@
+# Cloudflare Pages ignore file
+# Exclude Next.js cache and build artifacts that shouldn't be deployed
+# Only files in the 'out' directory (specified as build output) will be deployed
+
+# Next.js build artifacts (cache contains large webpack files exceeding 25MB limit)
+.next/
+
+# Node modules (not needed for static site deployment)
+node_modules/
+
+# Development files
+.git/
+.gitignore
+.prettierignore
+README.md
+DEPLOYMENT.md
+
+# Source code (not needed after build)
+app/
+components/
+lib/
+
+# Config files (not needed after build)
+*.config.*
+tsconfig.json
+components.json
+
+# Environment files
+.env*
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Test coverage
+coverage/
+
+# Package management
+package.json
+package-lock.json
+
+# Misc
+*.pem

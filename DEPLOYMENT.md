@@ -157,6 +157,15 @@ To add a custom domain:
 - Verify Node.js version compatibility (recommend v18 or higher)
 - Review Cloudflare Pages build logs for specific errors
 
+### "Pages only supports files up to 25 MiB in size" error
+
+If you encounter an error about large files (e.g., `.next/cache/webpack/server-production/0.pack`):
+
+- This occurs because Cloudflare Pages validates all files in the repository, including build cache files
+- Solution: The `.cfignore` file in the repository excludes the `.next/` directory and other build artifacts from deployment
+- The `.cfignore` file works similarly to `.gitignore` but specifically for Cloudflare Pages deployments
+- Only files in the `out/` directory (the configured build output directory) will be deployed
+
 ## Additional Resources
 
 - [Next.js Static Export Documentation](https://nextjs.org/docs/app/building-your-application/deploying/static-exports)

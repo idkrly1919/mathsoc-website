@@ -162,9 +162,9 @@ To add a custom domain:
 If you encounter an error about large files (e.g., `.next/cache/webpack/server-production/0.pack`):
 
 - This occurs because Cloudflare Pages validates all files in the repository, including build cache files
-- Solution: The `.cfignore` file in the repository excludes the `.next/` directory and other build artifacts from deployment validation
-- The `.cfignore` file works similarly to `.gitignore` but specifically for Cloudflare Pages deployments
-- Only files in the `out/` directory (the configured build output directory) will be deployed
+- Solution: The build script automatically removes the `.next/cache/` directory after building to prevent this error
+- The build command in `package.json` is: `next build && rm -rf .next/cache`
+- Only files in the `out/` directory (the configured build output directory) are deployed
 
 ## Additional Resources
 

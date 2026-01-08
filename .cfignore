@@ -1,9 +1,0 @@
-# Cloudflare Pages ignore file
-# Excludes files from validation during Cloudflare Pages deployment
-# Only files in the 'out' directory (build output) will actually be deployed
-
-# Next.js build artifacts - contains large webpack cache files that can exceed the 25MB limit
-.next/
-
-# Node modules - large directory not needed for deployment
-node_modules/

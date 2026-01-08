@@ -44,9 +44,12 @@ This will generate static HTML files in the `out/` directory, including the main
 5. Choose your repository: `idkrly1919/mathsoc-website` (or your forked repository)
 6. Configure build settings:
    - **Production branch**: `main` (or your preferred branch)
-   - **Framework preset**: Next.js
+   - **Framework preset**: Next.js (Static HTML Export)
    - **Build command**: `npm run build`
    - **Build output directory**: `out`
+   
+   **Important**: Make sure the "Build output directory" is set to `out`, NOT `/` or `.`. This tells Cloudflare Pages where to find the static files after the build completes.
+   
 7. Click **Save and Deploy**
 
 ### Option 2: Manual Deployment via Wrangler CLI
@@ -138,6 +141,25 @@ To add a custom domain:
 5. Update DNS settings as required
 
 ## Troubleshooting
+
+### "This page can't be found" or HTTP ERROR 404
+
+If you see a 404 error when accessing your deployed site:
+
+1. **Check the build output directory setting**:
+   - Go to your Cloudflare Pages project settings
+   - Navigate to **Settings** > **Builds & deployments**
+   - Verify that "Build output directory" is set to `out` (not `/`, `.`, or empty)
+   - If it's incorrect, update it and trigger a new deployment
+
+2. **Verify the build completed successfully**:
+   - Check the deployment logs in Cloudflare Pages dashboard
+   - Look for "✓ Exporting" and "Finished" messages
+   - Ensure no errors occurred during the build
+
+3. **Check if index.html exists**:
+   - The `out/` directory should contain `index.html` after building
+   - Run `npm run build` locally and verify `out/index.html` exists
 
 ### "No web page found" error
 

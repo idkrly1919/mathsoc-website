@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && node -e \"require('fs').rmSync('.next/cache', { recursive: true, force: true })\"",
+    "build": "next build && node -e \"try { require('fs').rmSync('.next/cache', { recursive: true, force: true }); } catch (e) { console.log('Cache cleanup skipped:', e.message); }\"",
     "start": "next start",
     "lint": "next lint"
   },

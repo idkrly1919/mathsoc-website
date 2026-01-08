@@ -12,10 +12,8 @@ node_modules/
 .git/
 .gitignore
 .prettierignore
-README.md
-DEPLOYMENT.md
 
-# Source code (not needed after build)
+# Source code (not needed after build to 'out' directory)
 app/
 components/
 lib/
@@ -42,10 +40,6 @@ yarn-error.log*
 
 # Test coverage
 coverage/
-
-# Package management
-package.json
-package-lock.json
 
 # Misc
 *.pem

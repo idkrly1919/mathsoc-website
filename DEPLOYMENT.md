@@ -44,7 +44,7 @@ This will generate static HTML files in the `out/` directory, including the main
 5. Choose your repository: `idkrly1919/mathsoc-website` (or your forked repository)
 6. Configure build settings:
    - **Production branch**: `main` (or your preferred branch)
-   - **Framework preset**: Next.js (Static HTML Export)
+   - **Framework preset**: Next.js
    - **Build command**: `npm run build`
    - **Build output directory**: `out`
    

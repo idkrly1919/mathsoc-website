@@ -163,7 +163,7 @@ If you encounter an error about large files (e.g., `.next/cache/webpack/server-p
 
 - This occurs because Cloudflare Pages validates all files in the repository, including build cache files
 - Solution: The build script automatically removes the `.next/cache/` directory after building to prevent this error
-- The build command in `package.json` is: `next build && rm -rf .next/cache`
+- The build command uses Node.js's built-in `fs.rmSync()` for cross-platform compatibility
 - Only files in the `out/` directory (the configured build output directory) are deployed
 
 ## Additional Resources
